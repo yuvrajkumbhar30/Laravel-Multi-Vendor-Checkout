@@ -9,6 +9,7 @@
 	use Illuminate\Support\Facades\DB;
 	use Illuminate\Validation\ValidationException;
 	use App\Events\OrderPlaced;
+	use App\Events\PaymentSucceeded;
 	
 	class CheckoutService
 	{
@@ -37,8 +38,13 @@
 					
 					foreach ($items as $item) {
 						
-						$product = Product::$item->product;
+						//$product = $item->product;
 						
+						//for race condition
+						
+						$product = Product::where('id', $item->product_id)
+                ->lockForUpdate()
+                ->first();
 						
 						//3
 						//proper error handling 
@@ -55,7 +61,7 @@
 						
 						// 5. Create Order Item
 						OrderItem::create([
-                        'order_id' => $order->id,
+						'order_id' => $order->id, 
                         'product_id' => $product->id,
                         'quantity' => $item->quantity,
                         'price' => $product->price
@@ -68,14 +74,18 @@
 					$order->update(['total_amount' => $total]);
 					
 					// 7. Create Payment
-					Payment::create([
+					$payment = Payment::create([
 					'order_id' => $order->id,
 					'status' => 'paid'
 					]);
 					
+					//Fire Event PaymentSucceeded
+					if($payment->status = 'paid'){
+						event(new PaymentSucceeded($payment));
+					}
 					$orders[] = $order;
 					
-					//Fire Event
+					//Fire Event OrderPlaced
 					event(new OrderPlaced($order));
 				
 				}

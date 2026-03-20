@@ -19,7 +19,7 @@
 		public function checkout()
 		{
 			try {
-			
+				
 				// TODO: replace with auth()->id() when auth implemented
 				$userId = 1;
 				
@@ -36,13 +36,13 @@
 				// clear cart
 				$cart->items()->delete();
 				
-				return redirect('/my-orders');
+				return redirect('/my-orders')->with('success', 'Order Successfully Placed.');
 				
 				} catch (\Exception $e) {
 				
-				 return redirect('/cart')->with('error', $e->getMessage());
+				return redirect('/cart')->with('error', $e->getMessage());
 			}
 		}
 		
 		
-	}	
+	}		

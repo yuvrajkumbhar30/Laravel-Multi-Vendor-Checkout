@@ -49,18 +49,12 @@ Link Event and  Listener
 
 php artisan make:provider EventServiceProvider
 
+php artisan make:request AddToCartRequest
+
+Events & Listeners  PaymentSucceeded
+
+php artisan make:event PaymentSucceeded
+
+php artisan make:listener HandlePaymentSuccess
+
 ----------------------------------------------------------
-
-Cart System 
-● Customers can: 
-○ Add products (from multiple vendors) to their cart 
-○ View cart grouped by vendor 
-○ Quantity cannot exceed available stock
-
-Auth (Sanctum)
-
-Queue
-
-Race condition handling
-
-Proper README (very important for submission)

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('vendor_id');
             $table->integer('user_id');
-            $table->integer('order_id');
 			$table->decimal('total_amount', 10, 2); 
             $table->string('status');
             $table->timestamps();

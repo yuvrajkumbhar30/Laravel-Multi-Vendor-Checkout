@@ -34,7 +34,7 @@ class OrderController extends Controller
         $vendors = Vendor::all();
 
         
-        return view('admin.orders.index', compact('orders', 'vendors'));
+        return view('admin.order.index', compact('orders', 'vendors'));
     }
 	
 	public function show($id)

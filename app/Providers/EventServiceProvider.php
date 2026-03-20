@@ -22,4 +22,14 @@ class EventServiceProvider extends ServiceProvider
     {
         //
     }
+	
+	protected $listen = [
+    \App\Events\OrderPlaced::class => [
+        \App\Listeners\SendOrderNotification::class,
+    ],
+
+    \App\Events\PaymentSucceeded::class => [
+        \App\Listeners\HandlePaymentSuccess::class,
+    ],
+	];
 }

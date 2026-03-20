@@ -4,7 +4,7 @@
         <!-- LOGO -->
         <a class="navbar-brand d-flex align-items-center" href="/">
             <img src="{{ asset('images/altrone-logo.png') }}" height="60" class="me-2">
-            <strong>MultiVendor</strong>
+            <strong>Multi Vendor Website</strong>
         </a>
 
         <!-- TOGGLE -->
@@ -25,7 +25,7 @@
                 <!-- CART -->
                 <li class="nav-item">
                     <a class="nav-link position-relative" href="/cart">
-                        🛒 Cart
+                        <span id="cart-icon"><i class="bi bi-cart"></i> Cart</span>
                         <span id="cart-count" 
                               class="badge bg-danger position-absolute top-0 start-100 translate-middle">
                               0

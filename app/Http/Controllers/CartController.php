@@ -4,6 +4,7 @@
 	
 	use Illuminate\Http\Request;
 	use App\Services\CartService;
+	use App\Http\Requests\AddToCartRequest;
 	
 	class CartController extends Controller
 	{
@@ -14,10 +15,10 @@
 			$this->cartService = $cartService;
 		}
 		
-		public function add(Request $request)
+		public function add(AddToCartRequest $request)
 		{
 			$cart = $this->cartService->addToCart(
-            1, // hardcoded user (demo)
+            1, // hardcoded user id 1
             $request->product_id,
             $request->quantity
 			);
