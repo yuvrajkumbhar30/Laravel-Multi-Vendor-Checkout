@@ -1,0 +1,66 @@
+User
+	php artisan make:migration add_role_to_users_table
+	
+Vendors
+	php artisan make:model Vendor -m
+	
+Products
+	php artisan make:model Product -m
+	
+Cart
+	php artisan make:model Cart -m
+	
+Cart items
+	php artisan make:model CartItem -m
+	
+Order
+	php artisan make:model Order -m
+	
+Order items
+	php artisan make:model OrderItem -m
+	
+Payment
+	php artisan make:model Payment -m
+	
+	
+php artisan make:seeder VendorSeeder
+php artisan make:seeder ProductSeeder
+php artisan make:seeder UserSeeder	
+
+php artisan migrate:fresh --seed : reset migration
+
+step :
+Add to cart
+Update quantity
+Remove item
+Get cart (grouped by vendor)
+
+Multi-Vendor Checkout
+
+ 
+Events
+	php artisan make:event OrderPlaced
+	
+Create Listener
+	php artisan make:listener SendOrderNotification
+
+Link Event and  Listener
+	php artisan event:cache
+
+php artisan make:provider EventServiceProvider
+
+----------------------------------------------------------
+
+Cart System 
+● Customers can: 
+○ Add products (from multiple vendors) to their cart 
+○ View cart grouped by vendor 
+○ Quantity cannot exceed available stock
+
+Auth (Sanctum)
+
+Queue
+
+Race condition handling
+
+Proper README (very important for submission)
