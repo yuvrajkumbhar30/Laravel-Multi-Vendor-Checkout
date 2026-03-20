@@ -19,6 +19,8 @@
 		public function checkout()
 		{
 			try {
+			
+				// TODO: replace with auth()->id() when auth implemented
 				$userId = 1;
 				
 				$cart = $this->cartService->getCart($userId);

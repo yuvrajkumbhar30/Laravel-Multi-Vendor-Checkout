@@ -37,13 +37,10 @@
 					
 					foreach ($items as $item) {
 						
-						$product = Product::find($item->product_id);
+						$product = Product::$item->product;
 						
-						// 3. Validate stock again (IMPORTANT)
-						//if ($item->quantity > $product->stock) {
-                        //throw new \Exception("Stock not available for {$product->name}");
-						//}
 						
+						//3
 						//proper error handling 
 						
 						if ($item->quantity > $product->stock) {
